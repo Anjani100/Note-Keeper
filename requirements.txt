@@ -53,5 +53,3 @@ sendgrid==6.1.0
 urllib3==1.25.7
 virtualenv==16.7.7
 virtualenv-clone==0.5.3
-webkit-server==1.0
-widgetsnbextension==3.5.1
