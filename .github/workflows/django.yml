@@ -28,4 +28,4 @@ jobs:
         export PYTHONPATH=noteKeeper
     - name: Run Tests
       run: |
-        python manage.py test
+        python noteKeeper/manage.py test
