@@ -20,7 +20,7 @@
             font-size: 16px;
             border: none;
             outline: none;
-            color: white;
+            color: green;
             background-color: inherit;
             font-family: inherit; /* Important for vertical align on mobile phones */
             margin: 0; /* Important for vertical align on mobile phones */
@@ -72,8 +72,8 @@
                     <a class="mdl-navigation__link" href="">Department</a>
                     <div class="dropdown-content">
                       <a href="#">Computer Science</a>
-                      <a href="#">Biotech</a>
-                      <a href="#">Mechanical</a>
+                      <a href="#">Biotechnology</a>
+                      <a href="#">Mechanical Engineering</a>
                     </div>
                   </div>
                   <div class="dropdown">
@@ -85,8 +85,13 @@
                     </div>
                   </div>
                   <a class="mdl-navigation__link" href="">Upload</a>
-                  <a class="mdl-navigation__link" href="">Sign in</a>
-                  <a class="mdl-navigation__link" href="/register">Get Started</a>
+                  {% if user.is_authenticated %}
+                      <a class="mdl-navigation__link" href="/account">{{user.username|title}}</a>
+                      <a class="mdl-navigation__link" href="/logout">Logout</a>
+                  {% else %}
+                      <a class="mdl-navigation__link" href="/login">Sign in</a>
+                      <a class="mdl-navigation__link" href="/register">Get Started</a>
+            {% endif %}
                 </nav>
             </div>
         </header>
@@ -97,8 +102,13 @@
             <a class="mdl-navigation__link" href="">Subject</a>
             <a class="mdl-navigation__link" href="">Past Year Papers</a>
             <a class="mdl-navigation__link" href="">Upload</a>
-            <a class="mdl-navigation__link" href="">Sign in</a>
-            <a class="mdl-navigation__link" href="/register">Get Started</a>
+            {% if user.is_authenticated %}
+                <a class="mdl-navigation__link" href="/account">{{user.username|title}}</a>
+                <a class="mdl-navigation__link" href="/logout">Logout</a>
+            {% else %}
+                <a class="mdl-navigation__link" href="/login">Sign in</a>
+                <a class="mdl-navigation__link" href="/register">Get Started</a>
+            {% endif %}
           </nav>
         </div>
         <main class="mdl-layout__content">
