@@ -1,0 +1,14 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <!-- Raised button -->
+        <button class="mdl-button mdl-js-button mdl-button--raised">login</button>
+    </form>
+
+    If you don't have an account <a href="/register" target="blank"><strong>register</strong></a> for one.
+
+{% endblock %}
