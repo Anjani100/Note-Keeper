@@ -3,166 +3,16 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href = "{% static 'main/css/material.css' %}", rel = 'stylesheet'>
+    <link href = "{% static 'main/css/random-styling.css' %}", rel = 'stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{% static 'main/js/material.js' %}"></script>
-    <link href = "css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-    <style>
-        
-        .reg-button {
-            width: 175px;
-            height: 45px;
-            font-size: 11px;
-            position: relative;
-            bottom: 460%;
-            left: 20%;
-            font-family: Gadget;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            color: #FFFFFF;
-            background-color: #25383C;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-        }
-        .reg-button:hover {
-            width: 175px;
-            height: 45px;
-            font-size: 11px;
-            position: relative;
-            font-family: Gadget;
-            text-transform: uppercase;
-            font-weight: 550;
-            color: #25383C;
-            background-color: white;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
-            cursor: pointer;
-        }
-        .logo {
-            width: 55px;
-            padding-bottom: 70px;
-        }
-        .logo-actual {
-            padding-top: 20px;
-            width: 45px;
-        }
-        .mdl-layout .mdl-layout__header--transparent{
-            background-color: white;
-        }
-        h6 {
-            color: #0C090A;
-            font-family: Gadget;
-            font-weight: 550;
-        }
-        .normal {
-            position: relative;
-            color: #25383C;
-            padding: 70px;
-            font-family: "Comic Sans", Gadget, sans-serif;
-            font-size: 20px;
-            font-weight: 200;
-            line-height: 1;
-            letter-spacing: 0.02em;
-            box-sizing: border-box;
-        }
-        .title-main {
-          display: block;
-          position: relative;
-          color: #25383C;
-          padding: 50px;
-          font-family: "Comic Sans", Gadget, sans-serif;
-          font-size: 70px;
-          font-weight: 200;
-          line-height: 1;
-          letter-spacing: 0.02em;
-          box-sizing: border-box;
-        }
-        .fa {
-            font-size: 20px;
-            width: 30px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 50%;
-        }
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: green;
-            background-color: inherit;
-            font-family: inherit; /* Important for vertical align on mobile phones */
-            margin: 0; /* Important for vertical align on mobile phones */
-        }
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f9f9f9;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-        }
-        .dropdown-content a {
-          float: none;
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-          text-align: left;
-        }
-        .dropdown-content a:hover {
-          background-color: #ddd;
-        }
-        .dropdown:hover .dropdown-content {
-          display: block;
-        }
-    </style>
 </head>
 <body>
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout">
-        <header class="mdl-layout__header--transparent">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">
-                    <a href = "/"><img class = "logo-actual" src = "{% static 'images/logo.png' %}"></a>
-                </span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation. We hide it in small screens. -->
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href=""><h6>Notes</h6></a>
-                    <a class="mdl-navigation__link" href=""><h6>Upload</h6></a>
-                    <a class="mdl-navigation__link" href=""><h6>Past Year Papers</h6></a>
-                    {% if user.is_authenticated %}
-                        <a class="mdl-navigation__link" href="/account"><h6>{{user.username|title}}</h6></a>
-                        <a class="mdl-navigation__link" href="/logout"><h6>Logout</h6></a>
-                    {% else %}
-                        <a class="mdl-navigation__link" href="/login"><h6>Sign in</h6></a>
-                    {% endif %}
-                </nav>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-          <span class="mdl-layout-title">Note Keeper</span>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">College</a>
-            <a class="mdl-navigation__link" href="">Subject</a>
-            <a class="mdl-navigation__link" href="">Past Year Papers</a>
-            <a class="mdl-navigation__link" href="">Upload</a>
-            {% if user.is_authenticated %}
-                <a class="mdl-navigation__link" href="/account">{{user.username|title}}</a>
-                <a class="mdl-navigation__link" href="/logout">Logout</a>
-            {% else %}
-                <a class="mdl-navigation__link" href="/login">Sign in</a>
-            {% endif %}
-          </nav>
-        </div>
+        {% include './includes/navbar.html' %}
+        {% include './includes/messages.html' %}
         <main class="mdl-layout__content">
             <div class="page-content"><!-- Content goes here -->
                 <br><br>
@@ -170,62 +20,8 @@
                 {% endblock %}
                 <br><br>
             </div>
-            <footer class="mdl-mega-footer">
-                <div class="mdl-mega-footer__middle-section">
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Features</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                          <li><a href="#">About</a></li>
-                          <li><a href="#">Terms</a></li>
-                          <li><a href="#">Partners</a></li>
-                          <li><a href="#">Updates</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Details</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                          <li><a href="#">Specs</a></li>
-                          <li><a href="#">Tools</a></li>
-                          <li><a href="#">Resources</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">Technology</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                          <li><a href="#">How it works</a></li>
-                          <li><a href="#">Patterns</a></li>
-                          <li><a href="#">Usage</a></li>
-                          <li><a href="#">Products</a></li>
-                          <li><a href="#">Contracts</a></li>
-                        </ul>
-                    </div>
-                    <div class="mdl-mega-footer__drop-down-section">
-                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer__heading">FAQ</h1>
-                        <ul class="mdl-mega-footer__link-list">
-                          <li><a href="#">Questions</a></li>
-                          <li><a href="#">Answers</a></li>
-                          <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mdl-mega-footer__bottom-section">
-                    <div class="mdl-logo">Note Keeper</div>
-                    <ul class="mdl-mega-footer__link-list">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Privacy & Terms</a></li>
-                      <li class="mdl-logo"><a href="#" class="fa fa-facebook"></a></li>
-                      <li class="mdl-logo"><a href="#" class="fa fa-twitter"></a></li>
-                      <li class="mdl-logo"><a href="#" class="fa fa-google"></a></li>
-                      <li class="mdl-logo"><a href="#" class="fa fa-linkedin"></a></li>
-                    </ul>
-                </div>
-            </footer>
+            <script>M.AutoInit();</script>
+            {% include './includes/footer.html' %}
         </main>
     </div>
 </body>

@@ -841,19 +841,19 @@ small {
     line-height: inherit; }
 
 .btn:focus, .btn-large:focus, .btn-small:focus,
-.btn-floating#25383C{
+.btn-floating{
   background-color: #25383C; }
 
 .btn, .btn-large, .btn-small {
   text-decoration: none;
-  color: #25383C;
-  background-color: #25383C;
+  color: blue;
+  background-color: blue;
   text-align: center;
   letter-spacing: .5px;
   transition: background-color .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover, .btn-small:hover {
-    background-color: #2bbbad; }
+    background-color: blue; }
 
 .btn-floating {
   display: inline-block;
@@ -865,7 +865,7 @@ small {
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: #26a69a;
+  background-color: blue;
   border-radius: 50%;
   transition: background-color .3s;
   cursor: pointer;

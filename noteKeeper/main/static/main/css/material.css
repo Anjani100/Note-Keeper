@@ -3844,7 +3844,7 @@ ul, ol {
   background: transparent;
   border: none;
   border-radius: 2px;
-  color: rgb(0,0,0);
+  color: blue;
   position: relative;
   height: 36px;
   margin: 0;
@@ -3871,13 +3871,13 @@ ul, ol {
   .mdl-button:hover {
     background-color: rgba(158,158,158, 0.20); }
   .mdl-button:focus:not(:active) {
-    background-color: rgba(0,0,0, 0.12); }
+    background-color: blue; }
   .mdl-button:active {
-    background-color: rgba(158,158,158, 0.40); }
+    background-color: blue; }
   .mdl-button.mdl-button--colored {
-    color: rgb(63,81,181); }
+    color: blue; }
     .mdl-button.mdl-button--colored:focus:not(:active) {
-      background-color: rgba(0,0,0, 0.12); }
+      background-color: blue; }
 
 input.mdl-button[type="submit"] {
   -webkit-appearance: none; }
@@ -3994,12 +3994,12 @@ input.mdl-button[type="submit"] {
     background-color: transparent; }
 
 .mdl-button--primary.mdl-button--primary {
-  color: rgb(63,81,181); }
+  color: blue; }
   .mdl-button--primary.mdl-button--primary .mdl-ripple {
-    background: rgb(255,255,255); }
+    background: blue; }
   .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab {
-    color: rgb(255,255,255);
-    background-color: rgb(63,81,181); }
+    color: blue;
+    background-color: blue; }
 
 .mdl-button--accent.mdl-button--accent {
   color: rgb(255,64,129); }
@@ -10122,6 +10122,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   margin: 0;
   padding: 20px 0; }
   .mdl-textfield .mdl-button {
+    color: blue;
     position: absolute;
     bottom: 20px; }
 
