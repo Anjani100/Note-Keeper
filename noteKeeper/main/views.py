@@ -68,7 +68,10 @@ def login_request(request):
 	return render(request,
 				 "main/login.html",
 				 {"form":form})
-
+def account_page(request):
+	return render(request,
+				 "main/account.html",
+				 )
 
 
 

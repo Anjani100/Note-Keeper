@@ -1,4 +1,4 @@
-{% extends 'main/header.html' %}
+{% extends "main/header.html" %}
 
                 {% block content %}
                     {% load static %}
@@ -18,7 +18,8 @@
                         <form method="POST">
                             {% csrf_token %}
                             {{form.as_p}}
-                            <button class="btn btn-outline-info" type="submit">Register</button>
+
+                            <button class="sub-button" type="submit">Submit</button>
                         </form>
                         If you already have an account <a href="/login" target="blank"><strong class = "strong-login">login</strong></a> instead.
                     </div>
