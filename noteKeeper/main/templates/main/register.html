@@ -1,13 +1,27 @@
-{% extends 'main/header.html' %}
+{% extends "main/header.html" %}
 
-{% block content %}
-    <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Sign Up</button>
-    </form>
+                {% block content %}
+                    {% load static %}
+                    <link href = "{% static 'main/css/materialize-1.css' %}", rel = 'stylesheet'>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    <br>
+                    <style>
+                        .strong-login {
+                            font-family: Gadget;
+                            color: black;
+                            font-weight: 550;
+                            color: #2980b9;
+                            font-size: 17px;
+                        }
+                    </style>
+                    <div class = 'container'>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{form.as_p}}
 
-    If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+                            <button class="sub-button" type="submit">Submit</button>
+                        </form>
+                        If you already have an account <a href="/login" target="blank"><strong class = "strong-login">login</strong></a> instead.
+                    </div>
 
-{% endblock %}
+                {% endblock %}
