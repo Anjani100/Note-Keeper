@@ -1,14 +1,38 @@
 {% extends 'main/header.html' %}
 
-{% block content %}
-    <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <!-- Raised button -->
-        <button class="mdl-button mdl-js-button mdl-button--raised">login</button>
-    </form>
-
-    If you don't have an account <a href="/register" target="blank"><strong>register</strong></a> for one.
-
-{% endblock %}
+				{% block content %}
+				    {% load static %}
+                    <link href = "{% static 'main/css/materialize-1.css' %}", rel = 'stylesheet'>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    <br>
+                    <style>
+                        .strong-login {
+                            font-family: Gadget;
+                            color: black;
+                            font-weight: 550;
+                            color: #2980b9;
+                            font-size: 17px;
+                        }
+                    </style>
+			    	<div class = 'container'>
+                        <div class="row">
+                            <form method = "POST" class="col s12">
+                            	{% csrf_token %}
+	                          	<div class="row">
+	                                <div class="input-field col s8">
+	                                  <input id="username" type="text" class="validate">
+	                                  <label for="username">Username</label>
+	                                </div>
+	                          	</div>
+	                          	<div class="row">
+	                                <div class="input-field col s8">
+	                                  <input id="password1" type="password" class="validate">
+	                                  <label for="password1">Password</label>
+	                                </div>
+	                            </div>
+	                            <button class="sub-button">Submit</button>
+                          </form>
+                        </div>
+                        No account? <a href="/register" target="blank"><strong class = "strong-login">Register here.</strong></a>
+                    </div>
+                {% endblock %}
