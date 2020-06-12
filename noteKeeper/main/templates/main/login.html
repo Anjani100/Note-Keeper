@@ -1,7 +1,7 @@
 {% extends 'main/header.html' %}
 
-				{% block content %}
-				    {% load static %}
+                {% block content %}
+                    {% load static %}
                     <link href = "{% static 'main/css/materialize-1.css' %}", rel = 'stylesheet'>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
                     <br>
@@ -14,25 +14,25 @@
                             font-size: 17px;
                         }
                     </style>
-			    	<div class = 'container'>
-                        <div class="row">
-                            <form method = "POST" class="col s12">
-                            	{% csrf_token %}
-	                          	<div class="row">
-	                                <div class="input-field col s8">
-	                                  <input id="username" type="text" class="validate">
-	                                  <label for="username">Username</label>
-	                                </div>
-	                          	</div>
-	                          	<div class="row">
-	                                <div class="input-field col s8">
-	                                  <input id="password1" type="password" class="validate">
-	                                  <label for="password1">Password</label>
-	                                </div>
-	                            </div>
-	                            <button class="sub-button">Submit</button>
-                          </form>
-                        </div>
-                        No account? <a href="/register" target="blank"><strong class = "strong-login">Register here.</strong></a>
+                    <div class = 'container'>
+                        <form method="post" action="" class="col s12">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="input-field col s9">
+                                    <input name="username" type="text"/>
+                                    <label for="username">Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s9">
+                                    <input name="password" type="password"/>
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+
+                            <input class="sub-button" type="submit" value="Login"/>
+                        </form>
+                        <p>No account? <a href="/register"><strong class = "strong-login">Register here.</strong></a></p>
                     </div>
                 {% endblock %}

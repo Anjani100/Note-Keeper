@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from .views import UserEditView
 
 app_name = 'main'
 
@@ -23,6 +24,7 @@ urlpatterns = [
     path('register/', views.register, name = 'register'),
     path('login/', views.login_request, name = "login"),
     path('logout/', views.logout_request, name = "logout"),
-    path('account/', views.account, name = "account")
+    path('profile/', UserEditView.as_view(), name = "profile"),
 ]
+
     
