@@ -35,6 +35,11 @@
 .sub-button:hover {
     background-color: #34495e;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 550;
+    border: none;
 }
 .reg-button:hover {
     width: 175px;

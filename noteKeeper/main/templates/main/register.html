@@ -13,44 +13,49 @@
                             color: #2980b9;
                             font-size: 17px;
                         }
+                        .strong-login:hover {
+                            text-decoration: underline;
+                        }
                     </style>
                     <div class = 'container'>
-                        <form method="post" action="" class="col s12">
-                            {% csrf_token %}
-                            
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input name="username" type="text" class="validate"/>
-                                    <label for="username">Username</label>
+                        <div class="row">
+                            <form method="post" action="" class="col s12">
+                                {% csrf_token %}
+                                
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "username" name="username" type="text" class="validate"/>
+                                        <label for="username">Username</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input name="email" type="text" class="validate"/>
-                                    <label for="email">Email</label>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "email" name="email" type="email" class="validate"/>
+                                        <label for="email">Email</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input name="college" type="text" class="validate"/>
-                                    <label for="college">College</label>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "college" name="college" type="text" class="validate"/>
+                                        <label for="college">College</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input name="password1" type="password" class="validate"/>
-                                    <label for="password1">Password</label>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id="password1" name="password1" type="password" class="validate"/>
+                                        <label for="password1">Password</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input name="password2" type="password" class="validate"/>
-                                    <label for="password2">Confirm Password</label>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id="password2" name="password2" type="password" class="validate"/>
+                                        <label for="password2">Confirm Password</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <input class = "sub-button" type="submit" value="Register"/>
-                        </form>
-                        If you already have an account <a href="/login" target="blank"><strong class = "strong-login">login</strong></a> instead.
+                                <input class = "sub-button" type="submit" value="Register"/>
+                            </form>
+                        </div>
+                        If you already have an account <a href="/login"><strong class = "strong-login">login</strong></a> instead.
                     </div>
 
                 {% endblock %}
