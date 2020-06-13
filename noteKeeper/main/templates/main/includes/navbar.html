@@ -8,13 +8,14 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href=""><h6>Notes</h6></a>
+                    <a class="mdl-navigation__link" href="/notes"><h6>Notes</h6></a>
                     <a class="mdl-navigation__link" href=""><h6>Upload</h6></a>
                     <a class="mdl-navigation__link" href=""><h6>Past Year Papers</h6></a>
                     {% if user.is_authenticated %}
                         <a class="mdl-navigation__link" href="/account"><h6>{{user.username|title}}</h6></a>
                         <a class="mdl-navigation__link" href="/logout"><h6>Logout</h6></a>
                     {% else %}
+                        <a class="mdl-navigation__link" href="/register"><h6>Register</h6></a>
                         <a class="mdl-navigation__link" href="/login"><h6>Sign in</h6></a>
                     {% endif %}
                 </nav>
@@ -23,14 +24,14 @@
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
           <span class="mdl-layout-title">Note Keeper</span>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">College</a>
-            <a class="mdl-navigation__link" href="">Subject</a>
-            <a class="mdl-navigation__link" href="">Past Year Papers</a>
+            <a class="mdl-navigation__link" href="/notes">Notes</a>
             <a class="mdl-navigation__link" href="">Upload</a>
+            <a class="mdl-navigation__link" href="">Past Year Papers</a>
             {% if user.is_authenticated %}
                 <a class="mdl-navigation__link" href="/account">{{user.username|title}}</a>
                 <a class="mdl-navigation__link" href="/logout">Logout</a>
             {% else %}
+                <a class="mdl-navigation__link" href="/register">Register</a>
                 <a class="mdl-navigation__link" href="/login">Sign in</a>
             {% endif %}
           </nav>
