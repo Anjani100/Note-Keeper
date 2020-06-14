@@ -23,3 +23,11 @@ class subject(models.Model):
 
 	def __str__(self):
 		return self.sub_name
+
+class college(models.Model):
+	college_name = models.CharField(max_length = 300)
+	department_name = models.CharField(max_length = 200)
+	college_slug = models.CharField(max_length = 200, default = 1)
+
+	def __str__(self):
+		return self.college_name

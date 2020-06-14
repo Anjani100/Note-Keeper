@@ -25,4 +25,5 @@ urlpatterns = [
     path('login/', views.login_request, name = "login"),
     path('logout/', views.logout_request, name = "logout"),
     path('profile/', UserEditView.as_view(), name = "profile"),
+    path('notes/', views.college, name = "college"),
 ]

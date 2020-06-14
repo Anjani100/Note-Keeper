@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import department, subject, year
+from .models import department, subject, year, college
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -85,3 +85,7 @@ def login_request(request):
 				 "main/login.html",
 				 {"form":form})
 
+def college(request):
+	return render(request,
+				  "main/college.html",
+				  {"college": college})
