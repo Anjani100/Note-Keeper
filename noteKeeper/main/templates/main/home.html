@@ -10,9 +10,9 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet title-main">&nbsp;</div>
                     {% if user.is_authenticated %}
-                        <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="register/"><button class="reg-button">Get Started</button></a></div>
-                    {% else %}
                         <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="notes/"><button class="reg-button">Notes</button></a></div>
+                    {% else %}
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="register/"><button class="reg-button">Get Started</button></a></div>
                     {% endif %}
                 </div>
             {% endblock %}
