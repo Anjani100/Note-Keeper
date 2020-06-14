@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import department, year, subject
 from django.db import models
 
+
 # Register your models here.
 class departmentAdmin(admin.ModelAdmin):
 	fieldsets = [

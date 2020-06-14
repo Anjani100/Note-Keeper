@@ -1,0 +1,34 @@
+{% extends 'main/header.html' %}
+	{% block content %}
+	<style>
+		h3{
+			text-align: center;
+			font-family: Gadget;
+            color: black; 
+		}
+		h4{
+			text-align:left;
+			font-family: Gadget;
+            color: black; 
+		}
+	</style>
+	<h3>Hello {{user.username|title}}</h3>
+	<h4>Profile info</h4>
+		<form action="#">
+		<div class="container" align="left">
+			  <div class="mdl-textfield mdl-js-textfield">
+			  	<label for="username">Username</label>
+			    <input class="mdl-textfield__input" type="text" value = "{{user.username|title}}" class="field left" readonly id="sample1">
+			  </div>
+
+			  <div col s9>
+				  <div class="mdl-textfield mdl-js-textfield">
+				  	<label for="email">Email</label>
+				    <input name="Email" class="mdl-textfield__input" type="text" value = "{{user.email|title}}" class="field left" readonly id="sample1">
+				  </div>
+			  </div>
+		</div>
+		</form>
+
+{% endblock %}
+	

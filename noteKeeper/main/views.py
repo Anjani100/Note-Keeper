@@ -6,22 +6,15 @@ from django.contrib import messages
 from .forms import RegistrationForm, LoginForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from django.views import generic
 from django.urls import reverse_lazy
+
 
 
 class UserEditView(generic.CreateView):
 	form_class = UserChangeForm
 	template_name = "main/profile.html"
 	success_url = reverse_lazy("homepage")
-
-
-def account(request, user):
-	user = User.objects.get(username = username)
-	return render(request,
-				 template_name = "main/account.html",
-				 context = {"user": user})
 
 def homepage(request):
 	return render(request = request,
@@ -78,5 +71,6 @@ def login_request(request):
 	return render(request,
 				 "main/login.html",
 				 {"form":form})
+
 
 
