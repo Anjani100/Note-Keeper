@@ -8,13 +8,14 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.views import generic
 from django.urls import reverse_lazy
-
+from django.core.exceptions import ValidationError
 
 
 class UserEditView(generic.CreateView):
 	form_class = UserChangeForm
 	template_name = "main/profile.html"
 	success_url = reverse_lazy("homepage")
+
 
 def homepage(request):
 	return render(request = request,
@@ -33,12 +34,24 @@ def register(request):
 			return redirect("main:homepage")
 
 		else:
-			for msg in form.error_messages:
-				messages.error(request, f"{msg}: {form.error_messages[msg]}")
+			username = form.cleaned_data.get('username')
+			password1 = form.cleaned_data.get('password1')
+			password2 = form.cleaned_data.get('password2')
+			print(form.cleaned_data)
+			
+			if not username:
+				messages.error(request, f"Error: Username already exists")
+			elif len(password1) < 8:
+				messages.error(request, f"Error: Your password must be at least 8 digits long.")
+			elif password1.isdigit():
+				messages.error(request, f"Error: Your password cannot be fully numeric.")
+			elif not (password1 and password2):
+				messages.error(request, f"Error: {form.error_messages['password_mismatch']}")
+			form = RegistrationForm()
 
 			return render(request = request,
-                          template_name = "main/register.html",
-                          context={"form":form})
+	                       template_name = "main/register.html",
+	                       context={"form":form})
 
 	form = RegistrationForm
 	return render(request = request,
@@ -60,17 +73,15 @@ def login_request(request):
 			user = authenticate(username = username, password = password)
 			if user is not None:
 				login(request, user)
-				messages.info(request, f"You logged in successfully in as {username}")
-				return redirect('/')
+				messages.info(request, f"You logged in successfully as {username}")
+				return redirect('main:homepage')
 			else:
-				messages.info(request, f"Invalid username or password")
-	else:
-		messages.info(request, f"Invalid username or password")
+				messages.error(request, f"Invalid username or password")
+		else:
+			messages.error(request, f"Invalid username or password")
 
 	form = AuthenticationForm()
 	return render(request,
 				 "main/login.html",
 				 {"form":form})
-
-
 
