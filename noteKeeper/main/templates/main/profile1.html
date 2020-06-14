@@ -1,34 +1,35 @@
-{% extends 'main/header.html' %}
-	{% block content %}
-	<style>
-		h3{
-			text-align: center;
-			font-family: Gadget;
-            color: black; 
-		}
-		h4{
-			text-align:left;
-			font-family: Gadget;
-            color: black; 
-		}
-	</style>
-	<h3>Hello {{user.username|title}}</h3>
-	<h4>Profile info</h4>
-		<form action="#">
-		<div class="container" align="left">
-			  <div class="mdl-textfield mdl-js-textfield">
-			  	<label for="username">Username</label>
-			    <input class="mdl-textfield__input" type="text" value = "{{user.username|title}}" class="field left" readonly id="sample1">
-			  </div>
+ {% extends 'main/header.html' %}
+  {% block content %}
+    <style>
+      hr.style1{
+                border-top: 1px solid #8c8b8b;
+                width: 50%;
+                }
+      h2{
+        text-align: center;
+        font-family: Gadget;
+              color: black; 
+        }
 
-			  <div col s9>
-				  <div class="mdl-textfield mdl-js-textfield">
-				  	<label for="email">Email</label>
-				    <input name="Email" class="mdl-textfield__input" type="text" value = "{{user.email|title}}" class="field left" readonly id="sample1">
-				  </div>
-			  </div>
-		</div>
-		</form>
+    </style>
+     <div class="row">
+      <div class="col s7 push-s5"><span class="flow-text"></span></div>
+      <div class="col s3 pull-s7"><span class="flow-text"> <h2>Profile Info</h2>.</span></div>
+    </div>
+    
+          
+   
+        <div class="container" align="left">
+          <div class="divider"></div>
+          <div class="section">
+            <h4>{{user.username|title}}</h4>
+            <hr class="style1">
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+            
+            <h4>{{user.email|title}}</h4>
+            <hr class="style1">
+          </div>
 
-{% endblock %}
-	
+  {% endblock %}
