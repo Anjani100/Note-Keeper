@@ -17,12 +17,6 @@ class UserEditView(generic.CreateView):
 	success_url = reverse_lazy("homepage")
 
 
-def account(request, user):
-	user = User.objects.get(username = username)
-	return render(request,
-				 template_name = "main/account.html",
-				 context = {"user": user})
-
 def homepage(request):
 	return render(request = request,
 				 template_name = "main/home.html",
