@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.views import generic
 from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
+from django.core.files.storage import FileSystemStorage
 
 
 class UserEditView(generic.CreateView):
@@ -84,6 +85,17 @@ def login_request(request):
 	return render(request,
 				 "main/login.html",
 				 {"form":form})
+
+def upload(request):
+	if request.method == 'POST' and request.FILES['myfile']:
+		myfile = request.FILES['myfile']
+		fs = FileSystemStorage()
+		filename = fs.save(myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		return render(request, 'core/simple_upload.html', {
+		    'uploaded_file_url': uploaded_file_url
+		})
+	return render(request, 'main/files.html')
 
 def college(request):
 	return render(request,
