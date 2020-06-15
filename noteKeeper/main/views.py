@@ -88,4 +88,4 @@ def login_request(request):
 def college(request):
 	return render(request,
 				  "main/college.html",
-				  {"college": College})
+				  {"colleges": College.objects.all})
