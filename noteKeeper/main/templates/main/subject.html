@@ -47,15 +47,15 @@
 				</style>
 				<div class = "container">
 					<p class = "heading">
-						Departments
+						Subjects
 					</p>
 				</div>
 				<div class = "container">
 					<div class="row">
-				        {% for dept in department %}
+				        {% for sub, partone in part_ones.items %}
 				            <div class="col s12 m6 l6">
-				                <a href="{{dept.department_slug}}", style="color:#000">
-				                    <button class="college-button btn-border">{{dept.department_name}}</button>
+				                <a href="{{partone}}", style="color:#000">
+				                    <button class="college-button btn-border">{{sub.sub_name}}</button>
 				                    <p class = "big">&nbsp;</p>
 				                </a>
 				            </div>
