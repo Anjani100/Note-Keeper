@@ -94,3 +94,44 @@ def department(request):
 	return render(request,
 				  "main/department.html",
 				  {"department": Department.objects.all})
+
+def single_slug(request, single_slug):
+
+	department = [d.department_slug for d in Department.objects.all()]
+
+	if single_slug in department:
+		matching_series = Semester.objects.filter(department_name__department_slug = single_slug)
+		sem_urls = {}
+
+		for m in matching_series.all():
+			part_one = m.sem_slug
+			sem_urls[m] = part_one
+
+		return render(request = request,
+					  template_name = "main/semester.html",
+					  context = {"semester": matching_series, "part_ones": sem_urls})
+
+	semester = [s.sem_slug for s in Semester.objects.all()]
+
+	if single_slug in semester:
+		matching_series = Subject.objects.filter(sem__sem_slug = single_slug)
+		sub_urls = {}
+
+		for m in matching_series.all():
+			part_one = m.sub_slug
+			sub_urls[m] = part_one
+
+		return render(request = request,
+					  template_name = "main/subject.html",
+					  context = {"subject": matching_series, "part_ones": sub_urls})
+
+	subject = [s.sub_slug for s in Subject.objects.all()]
+
+	if single_slug in subject:
+
+		return render(request = request,
+					  template_name = "main/files.html",
+					  context = {"subject": Subject.objects.all()})
+
+	else:
+		return HttpResponse("<p>Hello World</p>")
