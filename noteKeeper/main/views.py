@@ -89,3 +89,8 @@ def college(request):
 	return render(request,
 				  "main/college.html",
 				  {"colleges": College.objects.all})
+
+def department(request):
+	return render(request,
+				  "main/department.html",
+				  {"department": Department.objects.all})
