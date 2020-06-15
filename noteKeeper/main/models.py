@@ -23,6 +23,7 @@ class Department(models.Model):
 
 class Semester(models.Model):
 	sem = models.CharField(max_length = 20)
+	department_name = models.ForeignKey(Department, default = 1, verbose_name = "Department", on_delete = models.SET_DEFAULT)
 	sem_slug = models.CharField(max_length = 200, default = 1)
 
 	class Meta:
@@ -34,7 +35,6 @@ class Semester(models.Model):
 class Subject(models.Model):
 	sub_name = models.CharField(max_length = 200)
 	department_name = models.ForeignKey(Department, default = 1, verbose_name = "Department", on_delete = models.SET_DEFAULT)
-	sub_file = models.CharField(max_length = 200)
 	sem = models.ForeignKey(Semester, default = 1, verbose_name = "Semester", on_delete = models.SET_DEFAULT)
 	sub_slug = models.CharField(max_length = 200, default = 1)
 
