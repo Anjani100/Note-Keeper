@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import department, subject, year, college
+from .models import Department, Subject, Semester, College
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -20,7 +20,7 @@ class UserEditView(generic.CreateView):
 def homepage(request):
 	return render(request = request,
 				 template_name = "main/home.html",
-				 context = {"department": department.objects.all})
+				 context = {"department": Department.objects.all})
 
 def register(request):
 	if request.method == "POST":
@@ -88,4 +88,4 @@ def login_request(request):
 def college(request):
 	return render(request,
 				  "main/college.html",
-				  {"college": college})
+				  {"college": College})
