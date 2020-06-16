@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
-from .views import UserEditView
+
 
 app_name = 'main'
 
@@ -24,8 +24,8 @@ urlpatterns = [
     path('register/', views.register, name = 'register'),
     path('login/', views.login_request, name = "login"),
     path('logout/', views.logout_request, name = "logout"),
-    path('profile/', UserEditView.as_view(), name = "profile"),
     path('notes/', views.department, name = "department"),
     path('notes/<single_slug>', views.single_slug, name="single_slug"),
-    path('upload/', views.upload, name = "upload")
+    path('upload/', views.upload, name = "upload"),
+    path('profile/', views.edit_user, name = "profile"),
 ]

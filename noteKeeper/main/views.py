@@ -1,22 +1,26 @@
 from django.shortcuts import render, redirect
-from .models import Department, Subject, Semester, College
+from .models import Department, Subject, Semester, College, UserProfile
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, UserProfileForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.views import generic
-from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
 from django.core.files.storage import FileSystemStorage
+from django.forms.models import inlineformset_factory
+from django.core.exceptions import PermissionDenied
 
 
-class UserEditView(generic.CreateView):
-	form_class = UserChangeForm
-	template_name = "main/profile.html"
-	success_url = reverse_lazy("homepage")
 
+def edit_user(request):
+	if request.method == "POST":
+		form = UserProfileForm(request.POST)
+		return redirect("main:homepage")
+	form = UserProfileForm
+	return render(request = request,
+                  template_name = "main/profile.html",
+                  context={"UserProfileForm":UserProfileForm})
 
 def homepage(request):
 	return render(request = request,
