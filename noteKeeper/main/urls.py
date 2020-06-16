@@ -25,5 +25,7 @@ urlpatterns = [
     path('login/', views.login_request, name = "login"),
     path('logout/', views.logout_request, name = "logout"),
     path('profile/', UserEditView.as_view(), name = "profile"),
-    path('notes/', views.college, name = "college"),
+    path('notes/', views.department, name = "department"),
+    path('notes/<single_slug>', views.single_slug, name="single_slug"),
+    path('upload/', views.upload, name = "upload")
 ]

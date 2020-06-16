@@ -32,6 +32,7 @@
 					    border-color: #296821;
 					    border-radius: 25px;
 					    box-shadow: 0px 8px 15px rgba(15, 69, 8, 0.25);
+					    cursor: pointer;
 					}
 					.heading {
 						font-family: "Verdana";
@@ -40,16 +41,25 @@
 						text-align: center;
 						padding: 60px;
 					}
+					p.big {
+						line-height: 2;
+					}
 				</style>
 				<div class = "container">
 					<p class = "heading">
-						Choose your College
+						Semester
 					</p>
 				</div>
-				<div class="row">
-					{% for col in colleges %}
-						<div class="col s12 m6 l6">
-						<a href = ""><button class="college-button btn-border">{{col.college_name}}</button></a>
-					{% endfor %}
-				</div>
+				<div class = "container">
+					<div class="row">
+				        {% for sem, partone in part_ones.items %}
+				            <div class="col s12 m6 l6">
+				                <a href="{{partone}}", style="color:#000">
+				                    <button class="college-button btn-border">{{sem.sem}}</button>
+				                    <p class = "big">&nbsp;</p>
+				                </a>
+				            </div>
+				        {% endfor %}
+			    	</div>
+			    </div>
             {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import department, subject, year, college
+from .models import Department, Subject, Semester, College
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.views import generic
 from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
+from django.core.files.storage import FileSystemStorage
 
 
 class UserEditView(generic.CreateView):
@@ -20,7 +21,7 @@ class UserEditView(generic.CreateView):
 def homepage(request):
 	return render(request = request,
 				 template_name = "main/home.html",
-				 context = {"department": department.objects.all})
+				 context = {"department": Department.objects.all})
 
 def register(request):
 	if request.method == "POST":
@@ -85,7 +86,64 @@ def login_request(request):
 				 "main/login.html",
 				 {"form":form})
 
+def upload(request):
+	if request.method == 'POST' and request.FILES['myfile']:
+		myfile = request.FILES['myfile']
+		fs = FileSystemStorage()
+		filename = fs.save(myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		return render(request, 'core/simple_upload.html', {
+		    'uploaded_file_url': uploaded_file_url
+		})
+	return render(request, 'main/files.html')
+
 def college(request):
 	return render(request,
 				  "main/college.html",
-				  {"college": college})
+				  {"colleges": College.objects.all})
+
+def department(request):
+	return render(request,
+				  "main/department.html",
+				  {"department": Department.objects.all})
+
+def single_slug(request, single_slug):
+
+	department = [d.department_slug for d in Department.objects.all()]
+
+	if single_slug in department:
+		matching_series = Semester.objects.filter(department_name__department_slug = single_slug)
+		sem_urls = {}
+
+		for m in matching_series.all():
+			part_one = m.sem_slug
+			sem_urls[m] = part_one
+
+		return render(request = request,
+					  template_name = "main/semester.html",
+					  context = {"semester": matching_series, "part_ones": sem_urls})
+
+	semester = [s.sem_slug for s in Semester.objects.all()]
+
+	if single_slug in semester:
+		matching_series = Subject.objects.filter(sem__sem_slug = single_slug)
+		sub_urls = {}
+
+		for m in matching_series.all():
+			part_one = m.sub_slug
+			sub_urls[m] = part_one
+
+		return render(request = request,
+					  template_name = "main/subject.html",
+					  context = {"subject": matching_series, "part_ones": sub_urls})
+
+	subject = [s.sub_slug for s in Subject.objects.all()]
+
+	if single_slug in subject:
+
+		return render(request = request,
+					  template_name = "main/files.html",
+					  context = {"subject": Subject.objects.all()})
+
+	else:
+		return HttpResponse("<p>Hello World</p>")
