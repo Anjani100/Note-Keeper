@@ -86,17 +86,6 @@ def login_request(request):
 				 "main/login.html",
 				 {"form":form})
 
-def upload(request):
-	if request.method == 'POST' and request.FILES['myfile']:
-		myfile = request.FILES['myfile']
-		fs = FileSystemStorage()
-		filename = fs.save(myfile.name, myfile)
-		uploaded_file_url = fs.url(filename)
-		return render(request, 'core/simple_upload.html', {
-		    'uploaded_file_url': uploaded_file_url
-		})
-	return render(request, 'main/files.html')
-
 def college(request):
 	return render(request,
 				  "main/college.html",
@@ -141,9 +130,11 @@ def single_slug(request, single_slug):
 
 	if single_slug in subject:
 
-		return render(request = request,
-					  template_name = "main/files.html",
-					  context = {"subject": Subject.objects.all()})
+		if request.method == 'POST':
+			uploaded_file = request.FILES['document']
+			fs = FileSystemStorage()
+			fs.save(uploaded_file.name, uploaded_file)
+		return render(request, 'main/files.html')
 
 	else:
-		return HttpResponse("<p>Hello World</p>")
+		return HttpResponse("<p>Error 404: Page Not Found!</p>")
