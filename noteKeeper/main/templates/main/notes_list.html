@@ -1,0 +1,29 @@
+{% extends 'main/header.html' %}
+    {% block content %}
+        <div class = "container">
+            <h2>Notes</h2>
+        </div>
+
+        <div class = "container">
+            <table class = "table">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>File Published</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for note in notes %}
+                    <tr>
+                        <td>{{ note.file_name }}</td>
+                        <td>{{ note.file_published }}</td>
+                        <td>
+                            <a href = "{{ note.file_pdf.url }}" class = "btn" target = "_blank">Download PDF</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
