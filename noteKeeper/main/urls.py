@@ -27,4 +27,5 @@ urlpatterns = [
     path('notes/', views.department, name = "department"),
     path('notes/<single_slug>', views.single_slug, name="single_slug"),
     path('profile/', views.edit_user, name = "profile"),
+    path('profile/info', views.info, name = "info"),
 ]

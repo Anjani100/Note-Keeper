@@ -12,7 +12,8 @@ from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 
 
-
+def info(request):
+	return render(request, "main/info.html")
 def edit_user(request):
 	if request.method == "POST":
 		form = UserProfileForm(request.POST)
