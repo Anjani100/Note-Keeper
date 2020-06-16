@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Department, Subject, Semester, College, UserProfile
+from .models import Department, Subject, Semester, College, UserProfile, Notes
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-from .forms import RegistrationForm, LoginForm, UserProfileForm
+from .forms import RegistrationForm, LoginForm, UserProfileForm, NotesForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -14,6 +14,7 @@ from django.core.exceptions import PermissionDenied
 
 def info(request):
 	return render(request, "main/info.html")
+
 def edit_user(request):
 	if request.method == "POST":
 		form = UserProfileForm(request.POST)
@@ -136,10 +137,21 @@ def single_slug(request, single_slug):
 	if single_slug in subject:
 
 		if request.method == 'POST':
-			uploaded_file = request.FILES['document']
-			fs = FileSystemStorage()
-			fs.save(uploaded_file.name, uploaded_file)
-		return render(request, 'main/files.html')
+			form = NotesForm(request.POST, request.FILES)
+			if form.is_valid():
+				form.save()
+				s = single_slug + "/notes-list"
+				return redirect(s)
+		else:
+			form = NotesForm()
+		return render(request = request,
+					  template_name = 'main/files.html',
+					  context = {"form": form})
 
 	else:
 		return HttpResponse("<p>Error 404: Page Not Found!</p>")
+
+def notes_list(request, slug):
+	return render(request = request,
+				  template_name = "main/notes_list.html",
+				  context = {"notes": Notes.objects.all})

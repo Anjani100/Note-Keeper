@@ -2,16 +2,17 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import UserProfile
+from .models import UserProfile, Notes
 
-
+class NotesForm(forms.ModelForm):
+	class Meta:
+		model = Notes
+		fields = ['file_name', 'file_published', 'file_pdf']
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'city', 'country']
-
-
 
 class RegistrationForm(UserCreationForm):
 	username = forms.CharField(label = 'username', required = True, max_length = 150)

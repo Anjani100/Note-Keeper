@@ -5,7 +5,7 @@
 {% block content %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="document">
+    {{ form.as_p }}
     <button type="submit">Upload</button>
   </form>
 {% endblock %}

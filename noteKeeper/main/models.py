@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-from django.utils.translation import ugettext_lazy as _
-
+from datetime import datetime
 
 
 class UserProfile(models.Model):
@@ -56,3 +55,11 @@ class Subject(models.Model):
 
 	def __str__(self):
 		return self.sub_name
+
+class Notes(models.Model):
+	file_name = models.CharField(max_length = 300)
+	file_published = models.DateTimeField("date published", default = datetime.now())
+	file_pdf = models.FileField(upload_to = 'records/pdfs/')
+
+	def __str__(self):
+		return self.file_name
