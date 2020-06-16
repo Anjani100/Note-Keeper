@@ -11,8 +11,11 @@
             }
         </style>
         <div class = "text">
-            <h3>{{user.username}}</h3>
-            <h5>{{user.email}}</h5>
+            {% for users in userpro %}
+                <p>{{ users.first_name }}</p>
+                <p>{{ users.last_name }}</p>
+                <p>{{ users.city }}</p>                
+            {% endfor %}
             <a class = "edit" href="/profile/info">Edit info</a>
 
         </div>

@@ -8,21 +8,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.files.storage import FileSystemStorage
-from django.forms.models import inlineformset_factory
-from django.core.exceptions import PermissionDenied
-
-
-def info(request):
-	return render(request, "main/info.html")
 
 def edit_user(request):
-	if request.method == "POST":
-		form = UserProfileForm(request.POST)
-		return redirect("main:homepage")
-	form = UserProfileForm
 	return render(request = request,
                   template_name = "main/profile.html",
-                  context={"UserProfileForm":UserProfileForm})
+                  context = {"userpro": UserProfile.objects.all})
 
 def homepage(request):
 	return render(request = request,
@@ -155,3 +145,15 @@ def notes_list(request, slug):
 	return render(request = request,
 				  template_name = "main/notes_list.html",
 				  context = {"notes": Notes.objects.all})
+
+def info(request):
+	if request.method == "POST":
+		form = UserProfileForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect("main:profile")
+	else:
+		form = UserProfileForm()
+	return render(request,
+				  "main/info.html",
+				  {"form": form})
