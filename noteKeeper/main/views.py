@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
 
 def edit_user(request):
 	return render(request = request,
@@ -136,15 +137,23 @@ def single_slug(request, single_slug):
 			form = NotesForm()
 		return render(request = request,
 					  template_name = 'main/files.html',
-					  context = {"form": form})
+					  context = {"form": form, "slug": single_slug})
 
 	else:
 		return HttpResponse("<p>Error 404: Page Not Found!</p>")
 
 def notes_list(request, slug):
+	slugs = {}
+	slugs['slug'] = slug
 	return render(request = request,
 				  template_name = "main/notes_list.html",
-				  context = {"notes": Notes.objects.all})
+				  context = {"notes": Notes.objects.all, "slugs": slugs})
+
+def delete_notes(request, slug, pk):
+	if request.method == 'POST':
+		note = Notes.objects.get(pk = pk)
+		note.delete()
+	return redirect("main:homepage")
 
 def info(request):
 	if request.method == "POST":

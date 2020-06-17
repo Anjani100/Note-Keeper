@@ -3,9 +3,37 @@
 {% load static %}
 
 {% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
+	<form method="post" enctype="multipart/form-data">
+		<div class = 'container'>
+            <div class="row">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}                    
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <input id = "file_name" name="file_name" type="text" class="validate"/>
+                            <label for="file_name">File Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="input-field col s9">
+                    		<p>Date Published</p>
+                        	{{ form.file_published }}
+                        </div>
+                    </div>
+                    <div class="row">
+				        <div class="input-field col s9">
+				          	<input value="{{ slug }}" name = "sub_slug" id="sub_slug" type="text" class="validate">
+				          	<label for="sub_slug"></label>
+				        </div>
+			      	</div>
+                    <div class="row">
+                        <div class="input-field col s9">
+							{{ form.file_pdf }}
+                        </div>
+                    </div>
+                    <input class = "sub-button" type="submit" value="Upload"/>
+                </form>
+            </div>
+        </div>
+  	</form>
 {% endblock %}
