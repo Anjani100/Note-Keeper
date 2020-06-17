@@ -42,12 +42,13 @@ class Subject(models.Model):
 	sub_slug = models.CharField(max_length = 200, default = 1)
 
 	def __str__(self):
-		return self.sub_name
+		return self.sub_slug
 
 class Notes(models.Model):
 	file_name = models.CharField(max_length = 300)
 	file_published = models.DateTimeField("date published", default = datetime.now())
 	file_pdf = models.FileField(upload_to = 'records/pdfs/')
+	sub_slug = models.CharField(max_length = 120)
 
 	def __str__(self):
 		return self.file_name
