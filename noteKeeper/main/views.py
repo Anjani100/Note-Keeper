@@ -128,11 +128,15 @@ def single_slug(request, single_slug):
 	if single_slug in subject:
 
 		if request.method == 'POST':
-			form = NotesForm(request.POST, request.FILES)
-			if form.is_valid():
-				form.save()
-				s = single_slug + "/notes-list"
-				return redirect(s)
+			for f in request.FILES.getlist('file_pdf'):
+				form = NotesForm(request.POST, request.FILES)
+				if form.is_valid():
+					obj = form.save(commit=False)
+					obj.file_pdf = f
+					form.save()
+			s = "/notes/" + single_slug + "/notes-list"
+			return redirect(s)
+
 		else:
 			form = NotesForm()
 		return render(request = request,

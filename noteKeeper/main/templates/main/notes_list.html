@@ -18,10 +18,10 @@
                     {% for note in notes %}
                         {% if note.sub_slug == slugs.slug %}
                             <tr>
-                                <td>{{ note.file_name }}</td>
+                                <td>{{ note.file_pdf.name }}</td>
                                 <td>{{ note.file_published }}</td>
                                 <td>
-                                    <a href = "{{ note.file_pdf.url }}" class = "btn" target = "_blank">Download PDF</a>
+                                    <a href = "{{ note.file_pdf.url }}" class = "btn" target = "_blank">Download</a>
                                 </td>
                                 <td>
                                     <form method="post" action = "{% url 'main:delete_notes' slugs.slug note.pk %}">

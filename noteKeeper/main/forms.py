@@ -6,13 +6,12 @@ from .models import UserProfile, Notes
 from datetime import datetime
 
 class NotesForm(forms.ModelForm):
-	file_name = forms.CharField(label = 'file_name', required = True, max_length = 200)
 	sub_slug = forms.CharField(label = 'sub_slug', required = True)
-	file_pdf = forms.FileField(label = 'file_pdf', required = True)
+	file_pdf = forms.FileField(label = 'file_pdf', required = True, widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 	class Meta:
 		model = Notes
-		fields = ('file_name', 'file_published', 'sub_slug', 'file_pdf')
+		fields = ('file_published', 'sub_slug', 'file_pdf')
 
 class UserProfileForm(forms.ModelForm):
     class Meta:

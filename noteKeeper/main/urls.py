@@ -25,9 +25,9 @@ urlpatterns = [
     path('login/', views.login_request, name = "login"),
     path('logout/', views.logout_request, name = "logout"),
     path('notes/', views.department, name = "department"),
-    path('notes/<single_slug>', views.single_slug, name="single_slug"),
-    path('notes/<slug:slug>/notes-list', views.notes_list, name = "notes_list"),
+    path('notes/<single_slug>/', views.single_slug, name="single_slug"),
+    path('notes/<slug:slug>/notes-list/', views.notes_list, name = "notes_list"),
     path('notes/<slug:slug>/notes-list/<int:pk>/', views.delete_notes, name = "delete_notes"),
     path('profile/', views.edit_user, name = "profile"),
-    path('profile/info', views.info, name = "info"),
+    path('profile/info/', views.info, name = "info"),
 ]
