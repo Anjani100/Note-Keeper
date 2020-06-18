@@ -10,6 +10,7 @@ from django.core.exceptions import ValidationError
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 
+
 def edit_user(request):
 	return render(request = request,
                   template_name = "main/profile.html",
@@ -167,6 +168,6 @@ def info(request):
 			return redirect("main:profile")
 	else:
 		form = UserProfileForm()
-	return render(request,
-				  "main/info.html",
-				  {"form": form})
+		return render(request = request,
+				  	template_name = "main/info.html",
+				  	context = {"form": form})
