@@ -1,0 +1,202 @@
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        .fa {
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50%;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: inherit;
+            font-family: inherit; /* Important for vertical align on mobile phones */
+            margin: 0; /* Important for vertical align on mobile phones */
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Note Keeper</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                  <div class="dropdown">
+                    <a class="mdl-navigation__link" href="">College</a>
+                    <div class="dropdown-content">
+                      <a href="#">Heritage Institute of Technology</a>
+                      <a href="#">Delhi University</a>
+                      <a href="#">Calcutta University</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <a class="mdl-navigation__link" href="">Department</a>
+                    <div class="dropdown-content">
+                      <a href="#">Computer Science</a>
+                      <a href="#">Biotech</a>
+                      <a href="#">Mechanical</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <a class="mdl-navigation__link" href="">Past Year Papers</a>
+                    <div class="dropdown-content">
+                      <a href="#">2019</a>
+                      <a href="#">2018</a>
+                      <a href="#">2017</a>
+                    </div>
+                  </div>
+                  <a class="mdl-navigation__link" href="">Upload</a>
+                  <a class="mdl-navigation__link" href="">Sign in</a>
+                  <a class="mdl-navigation__link" href="">Get Started</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+          <span class="mdl-layout-title">Note Keeper</span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">College</a>
+            <a class="mdl-navigation__link" href="">Subject</a>
+            <a class="mdl-navigation__link" href="">Past Year Papers</a>
+            <a class="mdl-navigation__link" href="">Upload</a>
+            <a class="mdl-navigation__link" href="">Sign in</a>
+            <a class="mdl-navigation__link" href="">Get Started</a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content"><!-- Your content goes here -->
+                    <ul>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                    </ul>
+            </div>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer__middle-section">
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Features</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Terms</a></li>
+                          <li><a href="#">Partners</a></li>
+                          <li><a href="#">Updates</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Details</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                          <li><a href="#">Specs</a></li>
+                          <li><a href="#">Tools</a></li>
+                          <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Technology</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                          <li><a href="#">How it works</a></li>
+                          <li><a href="#">Patterns</a></li>
+                          <li><a href="#">Usage</a></li>
+                          <li><a href="#">Products</a></li>
+                          <li><a href="#">Contracts</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">FAQ</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                          <li><a href="#">Questions</a></li>
+                          <li><a href="#">Answers</a></li>
+                          <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mdl-mega-footer__bottom-section">
+                    <div class="mdl-logo">Note Keeper</div>
+                    <ul class="mdl-mega-footer__link-list">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">Privacy & Terms</a></li>
+                      <li class="mdl-logo"><a href="#" class="fa fa-facebook"></a></li>
+                      <li class="mdl-logo"><a href="#" class="fa fa-twitter"></a></li>
+                      <li class="mdl-logo"><a href="#" class="fa fa-google"></a></li>
+                      <li class="mdl-logo"><a href="#" class="fa fa-linkedin"></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
