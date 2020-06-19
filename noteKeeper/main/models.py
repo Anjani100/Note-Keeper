@@ -46,7 +46,7 @@ class Subject(models.Model):
 
 class Notes(models.Model):
 	file_published = models.DateTimeField("date published", default = datetime.now())
-	file_pdf = models.FileField(upload_to = 'records/pdfs/')
+	file_pdf = models.FileField(upload_to = '')
 	sub_slug = models.CharField(max_length = 120)
 
 
