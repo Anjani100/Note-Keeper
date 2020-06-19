@@ -9,7 +9,7 @@
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="/notes"><h6>Notes</h6></a>
-                    <a class="mdl-navigation__link" href=""><h6>Past Year Papers</h6></a>
+                    <a class="mdl-navigation__link" href="/past-year-papers"><h6>Past Year Papers</h6></a>
                     {% if user.is_authenticated %}
                         <a class="mdl-navigation__link"><h6>{{user.username|title}}</h6></a>
                         <a class="mdl-navigation__link" href="/logout"><h6>Logout</h6></a>
@@ -24,9 +24,9 @@
           <span class="mdl-layout-title">Note Keeper</span>
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="/notes">Notes</a>
-            <a class="mdl-navigation__link" href="">Past Year Papers</a>
+            <a class="mdl-navigation__link" href="/past-year-papers">Past Year Papers</a>
             {% if user.is_authenticated %}
-                <a class="mdl-navigation__link" href="/account">{{user.username|title}}</a>
+                <a class="mdl-navigation__link">{{user.username|title}}</a>
                 <a class="mdl-navigation__link" href="/logout">Logout</a>
             {% else %}
                 <a class="mdl-navigation__link" href="/register">Register</a>

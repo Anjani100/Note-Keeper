@@ -49,6 +49,10 @@ class Notes(models.Model):
 	file_pdf = models.FileField(upload_to = '')
 	sub_slug = models.CharField(max_length = 120)
 
+class Papers(models.Model):
+	file_published = models.DateTimeField("date published", default = datetime.now())
+	file_pdf = models.FileField(upload_to = '')
+	sem_slug = models.CharField(max_length = 120)
 
 class UserProfile(models.Model):
 	first_name = models.CharField(max_length = 100)

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Department, Subject, Semester, College, UserProfile, Notes
+from .models import Department, Subject, Semester, College, UserProfile, Notes, Papers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-from .forms import RegistrationForm, LoginForm, UserProfileForm, NotesForm
+from .forms import RegistrationForm, LoginForm, UserProfileForm, NotesForm, PapersForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -147,6 +147,45 @@ def single_slug(request, single_slug):
 	else:
 		return HttpResponse("<p>Error 404: Page Not Found!</p>")
 
+def paper_single_slug(request, single_slug):
+
+	department = [d.department_slug for d in Department.objects.all()]
+
+	if single_slug in department:
+		matching_series = Semester.objects.filter(department_name__department_slug = single_slug)
+		sem_urls = {}
+
+		for m in matching_series.all():
+			part_one = m.sem_slug
+			sem_urls[m] = part_one
+
+		return render(request = request,
+					  template_name = "main/semester-papers.html",
+					  context = {"semester": matching_series, "part_ones": sem_urls})
+
+	semester = [s.sem_slug for s in Semester.objects.all()]
+
+	if single_slug in semester:
+		
+		if request.method == 'POST':
+			for f in request.FILES.getlist('file_pdf'):
+				form = PapersForm(request.POST, request.FILES)
+				if form.is_valid():
+					obj = form.save(commit=False)
+					obj.file_pdf = f
+					form.save()
+			s = "/past-year-papers/" + single_slug + "/papers-list"
+			return redirect(s)
+
+		else:
+			form = PapersForm()
+		return render(request = request,
+					  template_name = 'main/papers.html',
+					  context = {"form": form, "slug": single_slug})
+
+	else:
+		return HttpResponse("<p>Error 404: Page Not Found!</p>")
+
 def notes_list(request, slug):
 	slugs = {}
 	slugs['slug'] = slug
@@ -154,10 +193,23 @@ def notes_list(request, slug):
 				  template_name = "main/notes_list.html",
 				  context = {"notes": Notes.objects.all, "slugs": slugs})
 
+def papers_list(request, slug):
+	slugs = {}
+	slugs['slug'] = slug
+	return render(request = request,
+				  template_name = "main/papers_list.html",
+				  context = {"papers": Papers.objects.all, "slugs": slugs})
+
 def delete_notes(request, slug, pk):
 	if request.method == 'POST':
 		note = Notes.objects.get(pk = pk)
 		note.delete()
+	return redirect("main:homepage")
+
+def delete_papers(request, slug, pk):
+	if request.method == 'POST':
+		paper = Papers.objects.get(pk = pk)
+		paper.delete()
 	return redirect("main:homepage")
 
 def info(request):
