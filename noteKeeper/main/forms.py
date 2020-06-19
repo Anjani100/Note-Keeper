@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import UserProfile, Notes
+from .models import UserProfile, Notes, Papers
 from datetime import datetime
 
 class NotesForm(forms.ModelForm):
@@ -12,6 +12,14 @@ class NotesForm(forms.ModelForm):
 	class Meta:
 		model = Notes
 		fields = ('file_published', 'sub_slug', 'file_pdf')
+
+class PapersForm(forms.ModelForm):
+	sem_slug = forms.CharField(label = 'sem_slug', required = True)
+	file_pdf = forms.FileField(label = 'file_pdf', required = True, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+	class Meta:
+		model = Papers
+		fields = ('file_published', 'sem_slug', 'file_pdf')
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
