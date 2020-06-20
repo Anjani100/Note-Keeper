@@ -22,6 +22,10 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.homepage, name = "homepage"),
+    path('about/', views.about, name = "about"),
+    path('about/<single_slug>', views.error_page, name = "error_page3"),
+    path('team/', views.team, name = "team"),
+    path('team/<single_slug>', views.error_page, name = "error_page4"),
     path('register/', views.register, name = 'register'),
     path('register/<single_slug>', views.error_page, name = 'error_page1'),
     path('login/', views.login_request, name = "login"),

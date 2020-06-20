@@ -25,6 +25,14 @@ def error_page(request, single_slug):
 	return render(request = request,
 				  template_name = "main/error_page.html")
 
+def about(request):
+	return render(request = request,
+				  template_name = "main/about.html")
+
+def team(request):
+	return render(request = request,
+				  template_name = "main/team.html")
+
 def register(request):
 	if request.method == "POST":
 		form = RegistrationForm(request.POST)
