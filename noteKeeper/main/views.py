@@ -21,6 +21,10 @@ def homepage(request):
 				 template_name = "main/home.html",
 				 context = {"department": Department.objects.all})
 
+def error_page(request, single_slug):
+	return render(request = request,
+				  template_name = "main/error_page.html")
+
 def register(request):
 	if request.method == "POST":
 		form = RegistrationForm(request.POST)
@@ -145,7 +149,8 @@ def single_slug(request, single_slug):
 					  context = {"form": form, "slug": single_slug})
 
 	else:
-		return HttpResponse("<p>Error 404: Page Not Found!</p>")
+		return render(request = request,
+					  template_name = "main/error_page.html")
 
 def paper_single_slug(request, single_slug):
 
@@ -184,7 +189,8 @@ def paper_single_slug(request, single_slug):
 					  context = {"form": form, "slug": single_slug})
 
 	else:
-		return HttpResponse("<p>Error 404: Page Not Found!</p>")
+		return render(request = request,
+					  template_name = "main/error_page.html")
 
 def notes_list(request, slug):
 	slugs = {}

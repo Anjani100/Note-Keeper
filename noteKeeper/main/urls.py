@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.shortcuts import render
 
 
 app_name = 'main'
@@ -22,7 +23,9 @@ app_name = 'main'
 urlpatterns = [
     path('', views.homepage, name = "homepage"),
     path('register/', views.register, name = 'register'),
+    path('register/<single_slug>', views.error_page, name = 'error_page1'),
     path('login/', views.login_request, name = "login"),
+    path('login/<single_slug>', views.error_page, name = 'error_page2'),
     path('logout/', views.logout_request, name = "logout"),
     path('notes/', views.department, name = "department"),
     path('notes/<single_slug>/', views.single_slug, name="single_slug"),
@@ -34,4 +37,5 @@ urlpatterns = [
     path('past-year-papers/<slug:slug>/papers-list/<int:pk>/', views.delete_papers, name = "delete_papers"),
     path('profile/', views.edit_user, name = "profile"),
     path('profile/info/', views.info, name = "info"),
+    path('<single_slug>/', views.error_page, name = "error_page")
 ]

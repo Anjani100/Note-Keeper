@@ -1,0 +1,8 @@
+- Folder upload
+- Past year papers --> DONE
+- Design
+- Remove Delete function
+- Organize Footer
+- Create a 404 page
+
+Dept->Sem->Papers
