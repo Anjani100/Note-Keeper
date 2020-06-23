@@ -8,33 +8,57 @@
                         font-family: Calibri;
                         color: #34495E;
                     }
-                    .side-book {
-                        width: 200px;
+                    body {
+                        background-image: url('{% static "images/background.jpg" %}')
                     }
                     .chem {
                         width: 100px;
                     }
+                    .side-book {
+                        width: 150px;
+                    }
+                    .home-note {
+                        height: 1000px;
+                    }
+                    .reg-button {
+                        position: relative;
+                        left: 100px;
+                    }
                 </style>
                 <!-- Title -->
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet title-main" style = "background-image: url('{% static "images/home-notes1.jpg" %}');">
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-layout--large-screen-only">
+                        <p>&nbsp;</p>
+                        <img class = "side-book" src = "{% static 'images/side-book-2.png' %}">
+                        <p>&nbsp;</p>
+                        <img class = "side-book" src = "{% static 'images/side-book-1.jpg' %}">
+                        <p>&nbsp;</p>
+                        <img class = "side-book" src = "{% static 'images/side-book-3.png' %}">
+                        <p>&nbsp;</p>
+                        <img class = "side-book" src = "{% static 'images/side-book-4.png' %}">
+                        <p>&nbsp;</p>
+                        <img class = "side-book" src = "{% static 'images/side-book-5.png' %}">
                     </div>
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet title-main">
                         <p>&nbsp;</p>
                         <b>Notes</b>&nbsp;
                         <p>&nbsp;</p>
-                        <h4>A hub to store all your college notes, papers and more. From college exams to team projects, you can share and complete all your work alongside your fellow classmates.</h4>
+                        <h4>A platform to store all your college notes, papers and more. From college exams to team projects, you can share and complete all your work alongside your fellow classmates.</h4>
                         <p>&nbsp;</p>
                         {% if user.is_authenticated %}
                             <a href="notes/"><button class="reg-button">Notes</button></a>
                         {% else %}
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="register/"><button class="reg-button">Get Started</button></a></div>
                         {% endif %}
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                         <p>&nbsp;</p>
-                        <img src = "{% static 'images/home-notes.jpg' %}">
+                        <p>&nbsp;</p>
+                        <h4>80% of exam preparation is done at last 20% of the study holidays. Get the past year papers to speed up your preparation.</h4>
+                        <p>&nbsp;</p>
+                        <a href="past-year-papers/"><button class="reg-button">Past Year Papers</button></a>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet home-note mdl-layout--large-screen-only" style = "background-image: url('{% static "images/notebook.jpg" %}');">
+                        <p>&nbsp;</p>
                     </div>
                 </div>
-                <div><img class = "chem" src = "{% static 'images/home-chem.jpg' %}"></div>
+                <!-- <div><img class = "chem" src = "{% static 'images/home-chem.jpg' %}"></div> -->
             {% endblock %}
