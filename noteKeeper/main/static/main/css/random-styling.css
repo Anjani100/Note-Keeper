@@ -3,8 +3,6 @@
     height: 45px;
     font-size: 11px;
     position: relative;
-    bottom: 460%;
-    left: 20%;
     font-family: Gadget;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -65,21 +63,25 @@
     padding-bottom: 70px;
 }
 .logo-actual {
-    padding-top: 20px;
+    padding-bottom: 20px;
     width: 45px;
 }
 .mdl-layout .mdl-layout__header--transparent{
     background-color: white;
 }
+h4 {
+    font-family: Calibri;
+    color: #34495E;
+}
 h6 {
     color: #0C090A;
     font-family: Gadget;
     font-weight: 550;
+    padding-bottom: 10px;
 }
 .normal {
     position: relative;
     color: #25383C;
-    padding: 70px;
     font-family: "Comic Sans", Gadget, sans-serif;
     font-size: 20px;
     font-weight: 200;
@@ -91,7 +93,6 @@ h6 {
   display: block;
   position: relative;
   color: #25383C;
-  padding: 50px;
   font-family: "Comic Sans", Gadget, sans-serif;
   font-size: 70px;
   font-weight: 200;
