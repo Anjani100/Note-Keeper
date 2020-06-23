@@ -1,3 +1,23 @@
+h4 {
+    font-family: Calibri;
+    color: #34495E;
+}
+body {
+    background-image: url('{% static "images/background.jpg" %}')
+}
+.chem {
+    width: 100px;
+}
+.side-book {
+    width: 150px;
+}
+.home-note {
+    height: 1000px;
+}
+.reg-button {
+    position: relative;
+    left: 100px;
+}
 .reg-button {
     width: 175px;
     height: 45px;
@@ -78,6 +98,16 @@ h6 {
     font-family: Gadget;
     font-weight: 550;
     padding-bottom: 10px;
+}
+h6:hover {
+    color: #223D3B;
+    text-decoration: underline;
+}
+.side-book {
+    width: 200px;
+}
+.chem {
+    width: 100px;
 }
 .normal {
     position: relative;
