@@ -3,18 +3,38 @@
 
             {% block content %}
                 {% load static %}
+                <style>
+                    h4 {
+                        font-family: Calibri;
+                        color: #34495E;
+                    }
+                    .side-book {
+                        width: 200px;
+                    }
+                    .chem {
+                        width: 100px;
+                    }
+                </style>
                 <!-- Title -->
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet title-main"><b>Note Keeper</b>&nbsp;<img class = "logo" src = "{% static 'images/logo.png' %}"></div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal">A hub to store all your college notes, papers and more</div>
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet title-main" style = "background-image: url('{% static "images/home-notes1.jpg" %}');">
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet title-main">
+                        <p>&nbsp;</p>
+                        <b>Notes</b>&nbsp;
+                        <p>&nbsp;</p>
+                        <h4>A hub to store all your college notes, papers and more. From college exams to team projects, you can share and complete all your work alongside your fellow classmates.</h4>
+                        <p>&nbsp;</p>
+                        {% if user.is_authenticated %}
+                            <a href="notes/"><button class="reg-button">Notes</button></a>
+                        {% else %}
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="register/"><button class="reg-button">Get Started</button></a></div>
+                        {% endif %}
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+                        <p>&nbsp;</p>
+                        <img src = "{% static 'images/home-notes.jpg' %}">
+                    </div>
                 </div>
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet title-main">&nbsp;</div>
-                    {% if user.is_authenticated %}
-                        <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="notes/"><button class="reg-button">Notes</button></a></div>
-                    {% else %}
-                        <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet normal"><a href="register/"><button class="reg-button">Get Started</button></a></div>
-                    {% endif %}
-                </div>
+                <div><img class = "chem" src = "{% static 'images/home-chem.jpg' %}"></div>
             {% endblock %}
