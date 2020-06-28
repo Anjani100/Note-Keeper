@@ -4,8 +4,24 @@
 
 {% block content %}
 	<title>Papers - NoteClub</title>
+	<style>
+		.small {
+			position: relative;
+			color: #25383C;
+        	        font: bold 30px 'Calisto MT';
+	                margin: 0;
+    			line-height: 1;
+    			letter-spacing: 0.02em;
+    			box-sizing: border-box;
+		}
+	</style>
         <link href = "{% static 'main/css/file-paper.css' %}", rel = 'stylesheet'>
-        <a href = "papers-list"><button class = "notes-button">Get Papers</button></a>
+	<div class = "mdl-layout--large-screen-only">
+            <a href = "papers-list"><button class = "notes-button">Get Papers</button></a>
+	</div>
+	<div class = "mdl-layout--small-screen-only">
+	    <a href = "papers-list"><button class = "reg-button">Get Papers</button></a>
+	</div>
         <div class = 'container'>
             <div class="row">
                 <form method="post" enctype="multipart/form-data">
@@ -40,10 +56,15 @@
                 </form>
             </div>
         </div>
-        <div class="col s12 m6 l4">
+        <div class="col s12 m6 l4 mdl-layout--large-screen-only">
             <p class = "big">Folder Upload</p>
             <p class = "big">&nbsp;</p>
         </div>
+	<div class = "mdl-layout--small-screen-only container">
+	    <p>&nbsp;</p>
+	    <p class = "small">Folder Upload</p>
+	    <p>&nbsp;</p>
+	</div>
         <div class = 'container'>
             <div class="row">
                 <form method="post" enctype="multipart/form-data">

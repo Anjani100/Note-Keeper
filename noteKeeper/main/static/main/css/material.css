@@ -7499,8 +7499,9 @@ input.mdl-button[type="submit"] {
 .mdl-layout__drawer-button {
   display: block;
   position: absolute;
-  height: 48px;
-  width: 48px;
+  padding: 10px;
+  height: 35px;
+  width: 40px;
   border: 0;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;

@@ -46,12 +46,15 @@ def register(request):
 
 		else:
 			username = form.cleaned_data.get('username')
+			email = form.cleaned_data.get('email')
 			password1 = form.cleaned_data.get('password1')
 			password2 = form.cleaned_data.get('password2')
 			print(form.cleaned_data)
-			
+
 			if not username:
 				messages.error(request, f"Error: Username already exists")
+			elif not email:
+				messages.error(request, f"Error: Invalid Email ID")
 			elif len(password1) < 8:
 				messages.error(request, f"Error: Your password must be at least 8 digits long.")
 			elif password1.isdigit():
