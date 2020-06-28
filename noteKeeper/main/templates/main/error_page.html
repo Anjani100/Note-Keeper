@@ -1,5 +1,7 @@
 <head>
   {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" href = "{% static 'images/logo.png' %}" type = "image/x-icon">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href = "{% static 'main/css/material.css' %}", rel = 'stylesheet'>
@@ -8,6 +10,12 @@
     <script src="{% static 'main/js/material.js' %}"></script>
     <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
     <link href = "{% static 'main/css/error_page.css' %}", rel = 'stylesheet'>
+    <title>404 Not Found - NoteClub</title>
+    <style>
+	@-ms-viewport{
+ 	     width: device-width;
+	}
+    </style>
 </head>
 <body onload = "preloader()">
     <div id = "loading"></div>
