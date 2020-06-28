@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z#j4j+90@^c(p%856u9xut&^-ecwvb43uq+v@u+jf#q0w(fz5u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '139.59.28.91', 'www.noteclub.engineer', 'noteclub.engineer']
 
 
 # Application definition
@@ -120,7 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
+STATIC_ROOT = '/var/www/noteKeeper/static/'
+MEDIA_ROOT = '/var/www/noteKeeper/media/'

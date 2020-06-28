@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from datetime import datetime
+import django
 
 class College(models.Model):
 	college_name = models.CharField(max_length = 300)
@@ -45,12 +46,12 @@ class Subject(models.Model):
 		return self.sub_slug
 
 class Notes(models.Model):
-	file_published = models.DateTimeField("date published", default = datetime.now())
+	file_published = models.DateTimeField("date published", default = django.utils.timezone.now)
 	file_pdf = models.FileField(upload_to = '')
 	sub_slug = models.CharField(max_length = 120)
 
 class Papers(models.Model):
-	file_published = models.DateTimeField("date published", default = datetime.now())
+	file_published = models.DateTimeField("date published", default = django.utils.timezone.now)
 	file_pdf = models.FileField(upload_to = '')
 	sem_slug = models.CharField(max_length = 120)
 
