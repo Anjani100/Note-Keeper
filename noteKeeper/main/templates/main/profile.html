@@ -1,0 +1,22 @@
+{% extends 'main/header.html' %}
+    {% block content %}
+        <style>
+            .text{
+                text-align: center;
+            }
+            .edit:hover{
+                font-family: Gadget;
+                text-decoration: underline;
+                color: black;
+            }
+        </style>
+        <div class = "text">
+            {% for users in userpro %}
+                <p>{{ users.first_name }}</p>
+                <p>{{ users.last_name }}</p>
+                <p>{{ users.city }}</p>                
+            {% endfor %}
+            <a class = "edit" href="/profile/info">Edit info</a>
+
+        </div>
+    {% endblock %}

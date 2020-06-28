@@ -1,0 +1,38 @@
+{% extends 'main/header.html' %}
+    {% block content %}
+        <div class = "container">
+            <h2>Papers</h2>
+        </div>
+
+        <div class = "container">
+            <table class = "table">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>File Published</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paper in papers %}
+                        {% if paper.sem_slug == slugs.slug %}
+                            <tr>
+                                <td>{{ paper.file_pdf.name }}</td>
+                                <td>{{ paper.file_published }}</td>
+                                <td>
+                                    <a href = "{{ paper.file_pdf.url }}" class = "btn" target = "_blank">Download</a>
+                                </td>
+                                <td>
+                                    <form method="post" action = "{% url 'main:delete_papers' slugs.slug paper.pk %}">
+                                        {% csrf_token %}
+                                        <button type = "submit" class = "btn">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}

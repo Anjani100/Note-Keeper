@@ -1,0 +1,33 @@
+<head>
+  {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href = "{% static 'main/css/material.css' %}", rel = 'stylesheet'>
+    <link href = "{% static 'main/css/random-styling.css' %}", rel = 'stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'main/js/material.js' %}"></script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link href = "{% static 'main/css/error_page.css' %}", rel = 'stylesheet'>
+</head>
+<body onload = "preloader()">
+    <div id = "loading"></div>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout">
+        {% include './includes/navbar.html' %}
+        {% include './includes/messages.html' %}
+        <main class="mdl-layout__content">
+            <div class="page-content"><!-- Content goes here -->
+                <a href="/"><button class = 'home-button'>Go Home</button></a>
+                <p class = 'error'></p>
+            </div>
+            <script>M.AutoInit();</script>
+            {% include './includes/footer.html' %}
+        </main>
+    </div>
+    <script>
+        var loader = document.getElementById('loading');
+        setTimeout(function preloader(){
+            loader.style.display = 'none';
+        }, 2);
+    </script>
+</body>

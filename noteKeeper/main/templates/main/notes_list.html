@@ -1,0 +1,38 @@
+{% extends 'main/header.html' %}
+    {% block content %}
+        <div class = "container">
+            <h2>Notes</h2>
+        </div>
+
+        <div class = "container">
+            <table class = "table">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>File Published</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for note in notes %}
+                        {% if note.sub_slug == slugs.slug %}
+                            <tr>
+                                <td>{{ note.file_pdf.name }}</td>
+                                <td>{{ note.file_published }}</td>
+                                <td>
+                                    <a href = "{{ note.file_pdf.url }}" class = "btn" target = "_blank">Download</a>
+                                </td>
+                                <td>
+                                    <form method="post" action = "{% url 'main:delete_notes' slugs.slug note.pk %}">
+                                        {% csrf_token %}
+                                        <button type = "submit" class = "btn">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}

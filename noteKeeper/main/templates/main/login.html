@@ -1,0 +1,41 @@
+{% extends 'main/header.html' %}
+
+                {% block content %}
+                    {% load static %}
+                    <link href = "{% static 'main/css/materialize-1.css' %}", rel = 'stylesheet'>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    <br>
+                    <style>
+                        .strong-login {
+                            font-family: Gadget;
+                            color: black;
+                            font-weight: 550;
+                            color: #2980b9;
+                            font-size: 17px;
+                        }
+                        .strong-login:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                    <div class = 'container'>
+                        <form method="post" action="" class="col s12">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="input-field col s9">
+                                    <input id = "username" name="username" required type="text"/>
+                                    <label for="username">Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s9">
+                                    <input id = "password" name="password" required type="password"/>
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+
+                            <input class="sub-button" type="submit" value="Login"/>
+                        </form>
+                        <p>No account? <a href="/register"><strong class = "strong-login">Register here.</strong></a></p>
+                    </div>
+                {% endblock %}

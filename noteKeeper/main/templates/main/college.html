@@ -1,0 +1,55 @@
+{% extends 'main/header.html' %}
+
+			{% block content %}
+				<style>
+					.college-button {
+						padding: 10px;
+						width: 400px;
+						height: 100px;
+					    font-size: 15px;
+					    position: relative;
+					    bottom: 460%;
+					    left: 20%;
+					    font-family: "Franklin Gothic Medium";
+					    text-transform: uppercase;
+					    letter-spacing: 1.5px;
+					    font-weight: 500;
+					    color: black;
+					    background-color: #FFFFFF;
+					    border: solid;
+					    border-color: #39D229;
+					    border-radius: 25px;
+					    box-shadow: 0px 8px 15px rgba(15, 69, 8, 0.35);
+					}
+					.college-button:hover {
+					    font-family: "Franklin Gothic Medium";
+					    text-transform: uppercase;
+					    letter-spacing: 1.5px;
+					    font-weight: 500;
+					    color: white;
+					    background-color: #0E4308;
+					    border: solid;
+					    border-color: #296821;
+					    border-radius: 25px;
+					    box-shadow: 0px 8px 15px rgba(15, 69, 8, 0.25);
+					}
+					.heading {
+						font-family: "Verdana";
+						font-weight: bold;
+						font-size: 35px;
+						text-align: center;
+						padding: 60px;
+					}
+				</style>
+				<div class = "container">
+					<p class = "heading">
+						Choose your College
+					</p>
+				</div>
+				<div class="row">
+					{% for col in colleges %}
+						<div class="col s12 m6 l6">
+						<a href = ""><button class="college-button btn-border">{{col.college_name}}</button></a>
+					{% endfor %}
+				</div>
+            {% endblock %}

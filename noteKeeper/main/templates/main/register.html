@@ -1,0 +1,61 @@
+{% extends "main/header.html" %}
+
+                {% block content %}
+                    {% load static %}
+                    <link href = "{% static 'main/css/materialize-1.css' %}", rel = 'stylesheet'>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    <br>
+                    <style>
+                        .strong-login {
+                            font-family: Gadget;
+                            color: black;
+                            font-weight: 550;
+                            color: #2980b9;
+                            font-size: 17px;
+                        }
+                        .strong-login:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                    <div class = 'container'>
+                        <div class="row">
+                            <form method="post" action="" class="col s12">
+                                {% csrf_token %}
+                                
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "username" name="username" type="text" required data-length="10" class="validate"/>
+                                        <label for="username">Username</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "email" name="email" type="email" required class="validate"/>
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id = "college" name="college" type="text" required class="validate"/>
+                                        <label for="college">College</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id="password1" name="password1" type="password" required class="validate"/>
+                                        <label for="password1">Password</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s9">
+                                        <input id="password2" name="password2" type="password" required class="validate"/>
+                                        <label for="password2">Confirm Password</label>
+                                    </div>
+                                </div>
+                                <input class = "sub-button" type="submit" value="Register"/>
+                            </form>
+                        </div>
+                        If you already have an account <a href="/login"><strong class = "strong-login">login</strong></a> instead.
+                    </div>
+
+                {% endblock %}

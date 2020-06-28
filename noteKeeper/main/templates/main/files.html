@@ -1,0 +1,94 @@
+{% extends 'main/header.html' %}
+
+{% load static %}
+
+{% block content %}
+        <link href = "{% static 'main/css/file-paper.css' %}", rel = 'stylesheet'>
+        <a href = "notes-list"><button class = "notes-button">Get Notes</button></a>
+        <div class = 'container'>
+            <div class="row">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s9">
+                            {{ form.file_published }}
+                            <span class="helper-text" data-error="wrong" data-success="right">Date Published</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <input value="{{ slug }}" name = "sub_slug" id="sub_slug" type="text" class="validate" multiple/>
+                            <label for="sub_slug">Subject</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Categorises the notes subject-wise</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <div class="file-field input-field">
+                              <div class="btn">
+                                <span>Choose File</span>
+                                <input name = "file_pdf" id = "file_pdf" type="file" required multiple>
+                              </div>
+                              <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class = "sub-button" type="submit" value="Upload"/>
+                </form>
+            </div>
+        </div>
+        <div class="col s12 m6 l4">
+            <p class = "big">Folder Upload</p>
+            <p class = "big">&nbsp;</p>
+        </div>
+        <div class = 'container'>   
+            <div class="row">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s9">
+                            {{ form.file_published }}
+                            <span class="helper-text" data-error="wrong" data-success="right">Date Published</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <input value="{{ slug }}" name = "sub_slug" id="sub_slug" type="text" class="validate" multiple/>
+                            <label for="sub_slug">Subject</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Categorises the notes subject-wise</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <div class="file-field input-field">
+                              <div class="btn">
+                                <span>Choose Folder</span>
+                                <input type="file" id="file_pdf" name="file_pdf" webkitdirectory directory/>
+                                <input type="text" id="directories" name="directories" hidden />
+                              </div>
+                              <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload folder">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class = "sub-button" type="submit" value="Upload"/>
+                </form>
+            </div>
+        </div>
+        <script>
+         files = document.querySelector("#file_pdf").files;
+         document.querySelector("#file_pdf").addEventListener("change", function() {
+            files = document.querySelector("#file_pdf").files;
+            var directories = {}
+            for (var file of files) {
+              file.webkitRelativePath
+              directories[file.name] = file.webkitRelativePath
+            }
+            directories = JSON.stringify(directories);
+            document.querySelector("#directories").value = directories
+         });
+        </script>
+{% endblock %}

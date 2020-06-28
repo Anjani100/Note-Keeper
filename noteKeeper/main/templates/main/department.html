@@ -1,0 +1,23 @@
+{% extends 'main/header.html' %}
+
+			{% block content %}
+			{% load static %}
+				<link href = "{% static 'main/css/department-style.css' %}", rel = 'stylesheet'>
+				<div class = "container">
+					<p class = "heading">
+						Departments
+					</p>
+				</div>
+				<div class = "container">
+					<div class="row">
+				        {% for dept in department %}
+				            <div class="col s12 m6 l6">
+				                <a href="{{dept.department_slug}}", style="color:#000">
+				                    <button class="college-button btn-border">{{dept.department_name}}</button>
+				                    <p class = "big">&nbsp;</p>
+				                </a>
+				            </div>
+				        {% endfor %}
+			    	</div>
+			    </div>
+            {% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'main/header.html' %}
+
+			{% block content %}
+			{% load static %}
+				<link href = "{% static 'main/css/department-style.css' %}", rel = 'stylesheet'>
+				<div class = "container">
+					<p class = "heading">
+						Subjects
+					</p>
+				</div>
+				<div class = "container">
+					<div class="row">
+				        {% for sub, partone in part_ones.items %}
+				            <div class="col s12 m6 l6">
+				                <a href="/notes/{{partone}}", style="color:#000">
+				                    <button class="college-button btn-border">{{sub.sub_name}}</button>
+				                    <p class = "big">&nbsp;</p>
+				                </a>
+				            </div>
+				        {% endfor %}
+			    	</div>
+			    </div>
+            {% endblock %}
