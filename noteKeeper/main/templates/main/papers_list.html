@@ -1,6 +1,5 @@
 {% extends 'main/header.html' %}
     {% block content %}
-	<title>Papers - NoteClub</title>
         <div class = "container">
             <h2>Papers</h2>
         </div>
@@ -12,7 +11,7 @@
                         <th>File Name</th>
                         <th>File Published</th>
                         <th>Download</th>
-                        <!-- <th>Delete</th> -->
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,12 +23,12 @@
                                 <td>
                                     <a href = "{{ paper.file_pdf.url }}" class = "btn" target = "_blank">Download</a>
                                 </td>
-                                <!-- <td>
+                                <td>
                                     <form method="post" action = "{% url 'main:delete_papers' slugs.slug paper.pk %}">
                                         {% csrf_token %}
                                         <button type = "submit" class = "btn">Delete</button>
                                     </form>
-                                </td> -->
+                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}
