@@ -1,2 +1,2 @@
 # Notes-Keeper
-Website for all your notes and study materials
+A platform for all your notes and study materials
