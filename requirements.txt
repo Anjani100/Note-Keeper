@@ -38,7 +38,7 @@ opencv-python==4.1.2.30
 packaging==19.2
 pandas==0.25.3
 pandocfilters==1.4.2
-pipenv==2018.11.26
+pipenv==2022.1.8
 python-dateutil==2.8.1
 python-http-client==3.2.1
 python-slugify==4.0.0
