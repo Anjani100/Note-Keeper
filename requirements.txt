@@ -33,7 +33,7 @@ mysql==0.0.2
 mysqlclient==1.4.6
 notebook==6.1.5
 numba==0.46.0
-numpy==1.17.3
+numpy==1.22.0
 opencv-python==4.1.2.30
 packaging==19.2
 pandas==0.25.3
